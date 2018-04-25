@@ -1,25 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-import { SiteRoutingModule } from './site.routing';
-import { HomeComponent } from './home';
-import {ProfileComponent} from './profile';
-import {WelcomeComponent} from './welcome';
-
+import { WelcomeComponent } from './welcome/welcome.component';
+import {SiteRouting} from './site.routing';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
-    SiteRoutingModule,
+    SiteRouting
   ],
-  declarations: [
-    HomeComponent,
-    ProfileComponent,
-    WelcomeComponent
-  ],
-  exports: []
+  declarations: [WelcomeComponent]
 })
-export class SiteModule {
-}
+export class SiteModule { }

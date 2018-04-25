@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import {ProfileComponent} from './profile';
+import {RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
+import {WelcomeComponent} from './welcome/welcome.component';
 
 const routes: Routes = [
-  { path: '', component: ProfileComponent},
-  { path: 'profile', component: ProfileComponent }
+  { path: '', component: WelcomeComponent }
 ];
 
 @NgModule({
@@ -15,5 +14,6 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class SiteRoutingModule {
+
+export class SiteRouting {
 }

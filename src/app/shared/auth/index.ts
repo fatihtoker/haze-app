@@ -1,2 +1,2 @@
-export * from './redirect.service';
-export * from './auth-guard.service';
+export * from './auth.component';
+export * from './auth.service';
