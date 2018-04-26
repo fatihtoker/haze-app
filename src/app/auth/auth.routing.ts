@@ -1,6 +1,6 @@
 import {RouterModule, Routes} from '@angular/router';
-import {LoginComponent} from './auth/login/login.component';
-import {SignupComponent} from './auth/signup/signup.component';
+import {LoginComponent} from './login/login.component';
+import {SignupComponent} from './signup/signup.component';
 import {NgModule} from '@angular/core';
 
 const routes: Routes = [
@@ -17,5 +17,5 @@ const routes: Routes = [
   ]
 })
 
-export class SharedRouting {
+export class AuthRouting {
 }

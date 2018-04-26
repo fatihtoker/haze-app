@@ -12,8 +12,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { FormsModule } from '@angular/forms';
 import {AppRoutingModule} from './app.routing';
 import {HttpClientModule} from '@angular/common/http';
-import {SharedModule} from './shared';
 import {SiteModule} from './site/site.module';
+import {AuthModule} from './auth/auth.module';
+import {SharedModule} from './shared';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,9 @@ import {SiteModule} from './site/site.module';
     AngularFirestoreModule,
     NgbModule.forRoot(),
     FormsModule,
-    SharedModule.forRoot(),
-    SiteModule
+    AuthModule.forRoot(),
+    SiteModule,
+    SharedModule
   ],
   providers: [AngularFireAuth],
   bootstrap: [AppComponent]

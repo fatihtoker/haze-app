@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', loadChildren: './site/site.module#SiteModule'},
-  { path: 'auth', loadChildren: './shared/shared.module#SharedModule'}
+  { path: 'auth', loadChildren: './auth/auth.module#AuthModule'}
 ];
 
 @NgModule({
