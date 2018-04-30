@@ -20,8 +20,14 @@
       </li>
     </ul>
     <div *ngIf="user; else anonContent">
-      <p class="text-info"><a routerLink="#"><em>{{ user.email }}</em></a></p>
-      <button class="btn btn-secondary my-2 my-sm-0" (click)="logout()">Logout</button>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="#">{{ user.email }}</a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-secondary my-2 my-sm-0" (click)="logout()">Logout</button>
+        </li>
+      </ul>
     </div>
     <ng-template #anonContent>
       <button class="btn btn-secondary my-2 my-sm-0" routerLink="auth/login">Login</button>

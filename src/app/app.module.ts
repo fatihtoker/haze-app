@@ -30,7 +30,7 @@ import {SharedModule} from './shared';
     FormsModule,
     AuthModule.forRoot(),
     SiteModule,
-    SharedModule
+    SharedModule.forRoot()
   ],
   providers: [AngularFireAuth],
   bootstrap: [AppComponent]

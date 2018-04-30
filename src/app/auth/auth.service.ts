@@ -18,7 +18,7 @@ export class AuthService {
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        this.router.navigate(['']);
+        this.router.navigate(['homepage']);
       })
       .catch(err => {
         console.log('Something went wrong:', err.message);
@@ -30,7 +30,7 @@ export class AuthService {
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        this.router.navigate(['']);
+        this.router.navigate(['homepage']);
       })
       .catch(err => {
         console.log('Something went wrong:', err.message);

@@ -12,5 +12,10 @@ export const environment = {
     projectId: 'haze-1a108',
     storageBucket: 'haze-1a108.appspot.com',
     messagingSenderId: '860100523276'
+  },
+  spotify: {
+    clientId: 'edcdbe9189b64d429dadc0778420d743',
+    clientSecret: '53d10d36bfef46509c1417ba63ab0133',
+    redirect_uri: 'http://localhost:4200/homepage'
   }
 };
