@@ -9,10 +9,16 @@ import {Router} from '@angular/router';
 export class AuthService {
   user: Observable<firebase.User>;
 
+  authState: any = null;
+
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
     this.user = firebaseAuth.authState;
+    firebaseAuth.authState.subscribe(auth => this.authState = auth);
   }
 
+  get isAuthenticated(): boolean {
+    return this.authState !== null;
+  }
   signup(email: string, password: string) {
     this.firebaseAuth
       .auth
@@ -42,7 +48,7 @@ export class AuthService {
       .auth
       .signOut().then(
       () => {
-        this.router.navigate(['']);
+        this.router.navigate(['/']);
       }
     );
   }

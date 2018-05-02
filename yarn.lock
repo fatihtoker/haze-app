@@ -4202,6 +4202,12 @@ next-tick@1:
   version "1.0.0"
   resolved "https://registry.npmjs.org/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
 
+ngx-webstorage-service@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/ngx-webstorage-service/-/ngx-webstorage-service-3.1.0.tgz#5dffff77e9f79f303386a58eabbd57a33498995b"
+  dependencies:
+    tslib "^1.7.1"
+
 no-case@^2.2.0:
   version "2.3.2"
   resolved "https://registry.npmjs.org/no-case/-/no-case-2.3.2.tgz#60b813396be39b3f1288a4c1ed5d1e7d28b464ac"

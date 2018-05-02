@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Inject, Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs/Observable';
-import {Router} from '@angular/router';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {SESSION_STORAGE, StorageService} from 'ngx-webstorage-service';
+
+const STORAGE_KEY = 'accessToken';
 
 @Injectable()
 export class SpotifyService {
@@ -11,25 +12,19 @@ export class SpotifyService {
   static BASE_URL = 'https://api.spotify.com/v1';
   static clientID = environment.spotify.clientId;
   static redirectURI = environment.spotify.redirect_uri;
-
   static authParams = 'client_id=' + SpotifyService.clientID + '&response_type=token' + '&redirect_uri=' + SpotifyService.redirectURI + '&scope=user-read-private';
 
-  private accessToken = new BehaviorSubject<string>('default token');
+  token: any;
 
-  currentAccessToken = this.accessToken.asObservable();
+  header: any;
 
-  header = new HttpHeaders();
-
-  constructor(private http: HttpClient, private router: Router) {
-  }
-
-  changeAccessToken(token: string) {
-    this.accessToken.next(token);
+  constructor(private http: HttpClient, @Inject(SESSION_STORAGE) private storage: StorageService) {
+    this.token = storage.get(STORAGE_KEY);
   }
 
   init() {
-    this.currentAccessToken.subscribe(token => {
-      this.header.set('Authorization', 'Bearer ' + token);
+    this.header = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token
     });
   }
 
@@ -42,7 +37,6 @@ export class SpotifyService {
     if (params) {
       queryURL = `${queryURL}?${params.join('&')}`;
     }
-    console.log(this.header);
     return this.http.get(queryURL, {headers: this.header}).map((res: any) => res);
   }
 
