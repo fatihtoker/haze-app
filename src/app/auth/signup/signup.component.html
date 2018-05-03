@@ -1,13 +1,16 @@
 <form *ngIf="!user; else loggedin">
+  <div class="alert alert-dismissible alert-danger" *ngIf="error && alertVisible">
+    <button type="button" class="close" data-dismiss="alert" (click)="closeDialog()">&times;</button>
+    {{ error }}
+  </div>
   <fieldset>
-    <legend>Please signup.</legend>
+    <legend><h2>Please signup.</h2></legend>
     <div class="form-group">
-      <label for="email">Email address</label>
-      <input type="email" class="form-control" [(ngModel)]="email" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <label class="form-control-label" for="email"><h3>Email address</h3></label>
+      <input type="email" class="form-control is-invalid" [(ngModel)]="email" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
     </div>
     <div class="form-group">
-      <label for="password">Password</label>
+      <label for="password"><h3>Password</h3></label>
       <input type="password" [(ngModel)]="password" class="form-control" id="password" name="password" placeholder="Password">
     </div>
     <button type="submit" class="btn btn-primary" (click)="signup()">Signup</button>

@@ -3,34 +3,5 @@
 </div>
 
 <ng-template #loggedIn>
-  <div class="jumbotron">
-    <p>Search for an item</p>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" [(ngModel)]="query" placeholder="Search" name="search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit" (click)="onSearchClicked()">Search</button>
-    </form>
-    <hr>
-    <div *ngIf="tracks" class="row card-group">
-      <div class="col-4" *ngFor="let model of tracks">
-        <div class="card text-white bg-dark mb-3">
-          <h3 class="card-header">{{ model.name }}</h3>
-          <div class="card-body">
-            <h5 class="card-title">Artist: {{ model.artists[0].name }} </h5>
-            <h6 class="card-subtitle text-muted">Album: {{ model.album.name }}</h6>
-          </div>
-          <img style="height: 300px; width: 300px; display: block;" [src]="model.album.images[1].url" alt="Track Image">
-          <div class="card-body">
-
-            <audio controls>
-              <source [src]="model.previewUrl">
-            </audio>
-          </div>
-          <div class="card-body" style="background: whitesmoke">
-            <a href="#" class="card-link">Favorite</a>
-            <a href="#" class="card-link">Share</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <h3>Logged in with Spotify!</h3>
 </ng-template>

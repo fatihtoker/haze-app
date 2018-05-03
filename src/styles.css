@@ -2,6 +2,7 @@
 
 
 @import url(https://bootswatch.com/4/lux/bootstrap.min.css);
+@import "./assets/font-awesome/web-fonts-with-css/css/fontawesome-all.css";
 
 html, body {
   height: 100%;

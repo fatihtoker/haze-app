@@ -16,6 +16,7 @@ import {SiteModule} from './site/site.module';
 import {AuthModule} from './auth/auth.module';
 import {SharedModule} from './shared';
 import {StorageServiceModule} from 'ngx-webstorage-service';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {StorageServiceModule} from 'ngx-webstorage-service';
     AuthModule.forRoot(),
     SiteModule,
     SharedModule.forRoot(),
-    StorageServiceModule
+    StorageServiceModule,
+    AngularFireDatabaseModule
   ],
   providers: [AngularFireAuth],
   bootstrap: [AppComponent]

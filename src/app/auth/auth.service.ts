@@ -3,19 +3,24 @@ import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import {Observable} from 'rxjs/Observable';
 import {Router} from '@angular/router';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
+import {UserModel} from './user.model';
 
 
 @Injectable()
 export class AuthService {
   user: Observable<firebase.User>;
 
+  private errorSource = new BehaviorSubject<string>(null);
+  error = this.errorSource.asObservable();
+
   authState: any = null;
 
-  constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
+  constructor(private firebaseAuth: AngularFireAuth, private router: Router, private db: AngularFireDatabase) {
     this.user = firebaseAuth.authState;
     firebaseAuth.authState.subscribe(auth => this.authState = auth);
   }
-
   get isAuthenticated(): boolean {
     return this.authState !== null;
   }
@@ -23,11 +28,17 @@ export class AuthService {
     this.firebaseAuth
       .auth
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
+      .then(user => {
         this.router.navigate(['homepage']);
+        this.errorSource.next(null);
+        let users: AngularFireList<UserModel[]>
+        users = this.db.list(`users/${user.uid}`);
+        users.push(new UserModel(user)).then(() => {
+          console.log('successfully added to db');
+        });
       })
       .catch(err => {
-        console.log('Something went wrong:', err.message);
+        this.errorSource.next(err.message);
       });
   }
 
@@ -37,9 +48,10 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         this.router.navigate(['homepage']);
+        this.errorSource.next(null);
       })
       .catch(err => {
-        console.log('Something went wrong:', err.message);
+        this.errorSource.next(err.message);
       });
   }
 
@@ -51,6 +63,10 @@ export class AuthService {
         this.router.navigate(['/']);
       }
     );
+  }
+
+  getUsers() {
+    return this.db.list(`users`);
   }
 
 }

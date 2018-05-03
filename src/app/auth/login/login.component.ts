@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   public password: any;
   public error: any;
   public user: any;
+  public alertVisible: boolean;
 
   constructor(private auth: AuthService, private router: Router) { }
 
@@ -23,10 +24,18 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.error = null;
     this.auth.login(this.email, this.password);
+    this.auth.error.subscribe(err => {
+      if (err) { this.error = err; this.alertVisible = true; }
+    });
   }
 
   logout() {
     this.auth.logout();
+  }
+
+  closeDialog() {
+    this.alertVisible = false;
   }
 }

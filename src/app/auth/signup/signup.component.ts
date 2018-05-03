@@ -13,6 +13,7 @@ export class SignupComponent implements OnInit {
   public password: any;
   public error: any;
   public user: any;
+  public alertVisible: boolean;
 
   constructor(private auth: AuthService, private router: Router) { }
 
@@ -21,10 +22,17 @@ export class SignupComponent implements OnInit {
 
   signup() {
     this.auth.signup(this.email, this.password);
+    this.auth.error.subscribe(err => {
+      if (err) { this.error = err; this.alertVisible = true; }
+    });
   }
 
   logout() {
     this.auth.logout();
+  }
+
+  closeDialog() {
+    this.alertVisible = false;
   }
 
 }

@@ -5,6 +5,8 @@ import {SiteRouting} from './site.routing';
 import { HomeComponent } from './home/home.component';
 import {FormsModule} from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
+import { SearchComponent } from './search/search.component';
+import { ExploreComponent } from './explore/explore.component';
 
 @NgModule({
   imports: [
@@ -12,6 +14,6 @@ import { ProfileComponent } from './profile/profile.component';
     SiteRouting,
     FormsModule
   ],
-  declarations: [WelcomeComponent, HomeComponent, ProfileComponent]
+  declarations: [WelcomeComponent, HomeComponent, ProfileComponent, SearchComponent, ExploreComponent]
 })
 export class SiteModule { }

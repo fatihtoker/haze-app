@@ -6,6 +6,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {SpotifyService} from './spotify/spotify.service';
 import {AuthModule} from '../auth/auth.module';
 import {AuthService} from '../auth';
+import {PostService} from './post/post.service';
+import {FollowService} from './follow/follow.service';
 
 @NgModule({
   imports: [
@@ -21,7 +23,9 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        SpotifyService
+        SpotifyService,
+        PostService,
+        FollowService
       ]
     };
   }

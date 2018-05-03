@@ -1,0 +1,70 @@
+<div class="jumbotron">
+  <p>Search for an item</p>
+  <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="text" [(ngModel)]="query" placeholder="Search" name="search">
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit" (click)="onTrackSearchClicked()">Track</button>
+    <button class="btn btn-primary my-2 my-sm-0" type="submit" (click)="onUserSearchClicked()">User</button>
+  </form>
+  <hr>
+  <div *ngIf="tracks">
+    <ul class="pagination pagination-lg">
+      <li class="page-item disabled">
+        <a class="page-link" href="#">&laquo;</a>
+      </li>
+      <li class="page-item active">
+        <a class="page-link" href="#">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">4</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">5</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">&raquo;</a>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="tracks" class="row card-group">
+    <div class="col-4" *ngFor="let model of tracks">
+      <div class="card text-white bg-dark mb-3">
+        <h3 class="card-header">{{ model.name }}</h3>
+        <div class="card-body">
+          <h5 class="card-title">Artist: {{ model.artists[0].name }} </h5>
+          <h6 class="card-subtitle text-muted">Album: {{ model.album.name }}</h6>
+        </div>
+        <img style="height: 300px; width: 300px; display: block;" [src]="model.album.images[1].url" alt="Track Image">
+        <div class="card-body">
+
+          <audio controls>
+            <source [src]="model.previewUrl">
+          </audio>
+        </div>
+        <div class="card-body" style="background: whitesmoke">
+          <button type="button" class="btn btn-success" (click)="onShareClicked(model)"><i class="fas fa-bullhorn"></i>  Share</button>
+          <button type="button" class="btn btn-danger"><i class="far fa-heart"></i>  Favorite</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="users" class="row card-group">
+    <div class="col-4" *ngFor="let model of users">
+      <div class="card text-white bg-dark mb-3">
+        <h3 class="card-header">{{ model.email }}</h3>
+        <div class="card-body">
+          <h5 class="card-title">uid: {{ model.uid }} </h5>
+        </div>
+        <img style="height: 300px; width: 300px; display: block;" [src]="model.photoUrl" alt="User Image">
+        <div class="card-body" style="background: whitesmoke">
+          <button type="button" class="btn btn-success"><i class="fas fa-user-plus"></i>Follow</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
