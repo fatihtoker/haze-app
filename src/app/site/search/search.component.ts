@@ -47,7 +47,7 @@ export class SearchComponent implements OnInit {
     this.users = [];
     this.auth.getUsers().valueChanges().subscribe((data: any) => {
       for (const model of data) {
-        let key = Object.keys(model)
+        let key = Object.keys(model)[0];
         this.users.push(new UserModel(model[key]));
       }
     });

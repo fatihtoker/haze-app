@@ -31,7 +31,7 @@ export class AuthService {
       .then(user => {
         this.router.navigate(['homepage']);
         this.errorSource.next(null);
-        let users: AngularFireList<UserModel[]>
+        let users: AngularFireList<UserModel>
         users = this.db.list(`users/${user.uid}`);
         users.push(new UserModel(user)).then(() => {
           console.log('successfully added to db');

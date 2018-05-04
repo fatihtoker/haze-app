@@ -9,7 +9,10 @@ import {SearchComponent} from './search/search.component';
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'homepage', component: HomeComponent, canActivate: [AuthGuard]},
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  { path: 'profile', canActivate: [AuthGuard], children: [
+      {path: '', component: ProfileComponent},
+      {path: ':id', component: ProfileComponent}
+    ]},
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard]}
 ];
 

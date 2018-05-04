@@ -56,11 +56,13 @@
   <div *ngIf="users" class="row card-group">
     <div class="col-4" *ngFor="let model of users">
       <div class="card text-white bg-dark mb-3">
-        <h3 class="card-header">{{ model.email }}</h3>
-        <div class="card-body">
-          <h5 class="card-title">uid: {{ model.uid }} </h5>
-        </div>
-        <img style="height: 300px; width: 300px; display: block;" [src]="model.photoUrl" alt="User Image">
+        <a [routerLink]="'/profile/' + model.uid">
+          <h3 class="card-header">{{ model.email }}</h3>
+          <div class="card-body">
+            <h5 class="card-title">uid: {{ model.uid }} </h5>
+          </div>
+          <img style="height: 300px; width: 300px; display: block;" [src]="model.photoUrl" alt="User Image">
+        </a>
         <div class="card-body" style="background: whitesmoke">
           <button type="button" class="btn btn-success"><i class="fas fa-user-plus"></i>Follow</button>
         </div>
